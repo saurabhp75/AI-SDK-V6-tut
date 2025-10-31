@@ -10,7 +10,8 @@ import {
 export const POST = async (req: Request): Promise<Response> => {
   const body = await req.json();
 
-  // get the UIMessage[] from the body
+  // get the UIMessage[] from the body, which is message history
+  // sent from the client
   const messages: UIMessage[] = body.messages;
 
   // convert the UIMessage[] to ModelMessage[]

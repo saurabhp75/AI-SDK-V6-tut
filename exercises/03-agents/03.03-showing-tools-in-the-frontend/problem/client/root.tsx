@@ -6,6 +6,7 @@ import './tailwind.css';
 import type { MyUIMessage } from '../api/chat.ts';
 
 const App = () => {
+  // TODO: pass MyUIMessage as the type argument to useChat
   const { messages, sendMessage } = useChat<MyUIMessage>({});
 
   const [input, setInput] = useState(

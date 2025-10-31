@@ -122,6 +122,7 @@ export const POST = async (req: Request): Promise<Response> => {
     },
     // TODO: add a custom stop condition to the streamText call
     // to force the agent to stop after 10 steps have been taken
+    // Is 10 max no. of steps or exact no. of steps?
     stopWhen: [stepCountIs(10)],
   });
 
