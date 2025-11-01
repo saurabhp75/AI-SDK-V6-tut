@@ -46,9 +46,34 @@ const result = await streamText({
     You are a helpful assistant that summarizes the content of a URL.
     </task-context>
 
+    <background-data>
+    Here is the content of the website:
+    <url>
+    ${url}
+    </url>
+    <content>
+    ${rawContent}
+    </content>
+    </background-data>
+
+    <rules>
+    - Use the content of the website to answer the question.
+    - If the question is not related to the content of the website, say "I'm sorry, I can only answer questions about the content of the website."
+    - Use quotes from the content of the website to answer the question.
+    - Use paragraphs in your output.
+    </rules>
+    
+    <conversation-history>
+    ${input}
+    </conversation-history>
+
     <the-ask>
     Summarize the content of the website based on the conversation history.
     </the-ask>
+
+    <output-format>
+    Return only the summary.
+    </output-format>
   `,
 });
 

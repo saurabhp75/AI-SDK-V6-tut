@@ -18,7 +18,7 @@ const IIMT_ARTICLE = readFileSync(
 const result = streamText({
   model: google('gemini-2.0-flash-lite'),
   prompt: `
-    <task-context>
+     <task-context>
     You are a helpful TypeScript expert that can explain complex TypeScript code for beginner TypeScript developers. You will be given a complex TypeScript code and you will need to explain it in a way that is easy to understand.
     </task-context>
 
@@ -42,6 +42,17 @@ const result = streamText({
     <the-ask>
     Explain the code, using the article as a reference.
     </the-ask>
+
+    <thinking-instructions>
+      Think about your answer first before you respond. Consider the optimal path for the user to understand the code. Consider all of the knowledge dependencies - the pieces of knowledge that rely on other pieces of knowledge. Assume the user knows very little about TypeScript. Create a list of the pieces of knowledge that the user needs to know, in order of dependency.
+    </thinking-instructions>
+
+    <output-format>
+    Return two sections - a <thinking> block and an answer.
+    - The <thinking> block should contain your thought process, and be wrapped in a <thinking> tag.
+    - The answer should be unwrapped.
+    - The answer should be in markdown format, using code blocks for the TypeScript code.
+    </output-format>
   `,
 });
 
